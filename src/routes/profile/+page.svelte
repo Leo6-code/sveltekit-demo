@@ -4,6 +4,7 @@
 	import { supabase } from '$lib/supabase';
 
 	import { session } from '$lib/store';
+	import Avatar from '$lib/Avatar.svelte';
 
 	let loading = false;
 	let username: string | null = null;
@@ -71,6 +72,8 @@
 
 {#if $session}
 	<form on:submit|preventDefault={updateProfile} class="form-widget">
+		<Avatar size={150} bind:url={avatarUrl} on:upload={updateProfile} />
+
 		<div>Email: {$session.user.email}</div>
 		<div>
 			<label for="username">Name</label>
