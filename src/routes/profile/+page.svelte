@@ -70,28 +70,28 @@
 	};
 </script>
 
-{#if $session}
-	<form on:submit|preventDefault={updateProfile} class="form-widget">
-		<Avatar size={150} bind:url={avatarUrl} on:upload={updateProfile} />
+<div class="prose">
+	{#if $session}
+		<form on:submit|preventDefault={updateProfile} class="form-widget">
+			<Avatar size={150} bind:url={avatarUrl} on:upload={updateProfile} />
 
-		<div>Email: {$session.user.email}</div>
-		<div>
-			<label for="username">Name</label>
-			<input id="username" type="text" bind:value={username} />
-		</div>
-		<div>
-			<label for="website">Website</label>
-			<input id="website" type="text" bind:value={website} />
-		</div>
-		<div>
-			<button type="submit" class="button primary block" disabled={loading}>
-				{loading ? 'Saving ...' : 'Update profile'}
-			</button>
-		</div>
-		<button type="button" class="button block" on:click={() => supabase.auth.signOut()}>
-			Sign Out
-		</button>
-	</form>
-{:else}
-	<div>seems you are not looged in!</div>
-{/if}
+			<div>Email: {$session.user.email}</div>
+			<div class="form-group">
+				<label for="username">Name</label>
+				<input id="username" type="text" bind:value={username} />
+			</div>
+			<div>
+				<label for="website">Website</label>
+				<input id="website" type="text" bind:value={website} />
+			</div>
+			<div>
+				<button type="submit" class="btn" disabled={loading}>
+					{loading ? 'Saving ...' : 'Update profile'}
+				</button>
+			</div>
+			<button type="button" class="btn" on:click={() => supabase.auth.signOut()}> Sign Out </button>
+		</form>
+	{:else}
+		<div>seems you are not looged in!</div>
+	{/if}
+</div>
