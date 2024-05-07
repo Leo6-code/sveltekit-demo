@@ -19,6 +19,8 @@
 		<a href="/" class="text-center">Home</a>|
 		<a href="/login" class="text-center">Login</a>|
 		<a href="/profile" class="text-center">Profile</a>|
+		<a href="/accounts" class="text-center">Accounts</a>|
+		<a href="/transactions" class="text-center">Transactions</a>|
 	</nav>
 
 	<select bind:value={$theme} class="fixed top-0 right-0">
