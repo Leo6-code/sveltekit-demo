@@ -9,5 +9,9 @@ export async function POST({ request }) {
 
 	const { data, error } = await supabase.from('rabbits').insert([rabbit]).select();
 
+	if (error) {
+		return new Response(error.message, { status: 500 });
+	}
+
 	return new Response(JSON.stringify(data));
 }
